@@ -1,0 +1,37 @@
+<div #menu class="menu-container">
+    <img *ngIf="!isMenuBackground" class="logo" src="assets/images/logo.png" />
+    <div *ngIf="isMenuBackground" class="logo-text">Just A Dog</div>
+    <div #hamburger class="hamburger" (click)="toggleMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+    <div class="menu-options" [ngClass]="{ 'slide-in-menu': menuOpen }">
+        <dog-button
+            [routerLink]="[pageSettings[ePage.Home].url]"
+            routerLinkActive
+            #homeActive="routerLinkActive"
+            [isActive]="homeActive.isActive"
+            [btnTxt]="'Strona główna'"
+        ></dog-button>
+        <dog-button
+            [routerLink]="[pageSettings[ePage.AboutMe].url]"
+            routerLinkActive
+            #aboutMeActive="routerLinkActive"
+            [isActive]="aboutMeActive.isActive"
+            [btnTxt]="'O mnie'"
+        ></dog-button>
+        <dog-button
+            [routerLink]="[pageSettings[ePage.Contact].url]"
+            routerLinkActive
+            #contactActive="routerLinkActive"
+            [isActive]="contactActive.isActive"
+            [btnTxt]="'Kontakt'"
+        ></dog-button>
+        <div class="social-media-container">
+            <i class="bi bi-facebook link-icon" (click)="openFacebook()"></i>
+            <i class="bi bi-instagram link-icon" (click)="openInstagram()"></i>
+            <div class="horizontal-bar"></div>
+        </div>
+    </div>
+</div>

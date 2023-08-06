@@ -1,17 +1,5 @@
-import {
-    animate,
-    state,
-    style,
-    transition,
-    trigger,
-} from '@angular/animations';
-import {
-    Component,
-    ElementRef,
-    OnDestroy,
-    OnInit,
-    ViewChild,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ePage } from './helpers/pageLibrary';
 
 @Component({
     selector: 'dog-root',
@@ -20,10 +8,8 @@ import {
 })
 export class AppComponent implements OnInit, OnDestroy {
     public title = 'justADog';
-
-    @ViewChild('hamburger') public hamburger: ElementRef;
-
-    public menuOpen = false;
+    public selectedPage: any;
+    public ePage = ePage;
 
     constructor() {}
 
@@ -35,24 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
         document.body.classList.remove('home');
     }
 
-    public openFacebook(): void {
-        window.open('https://www.facebook.com/profile.php?id=100091854533629');
-        if (this.menuOpen) {
-            this.toggleMenu();
-        }
-    }
-
-    public openInstagram(): void {
-        window.open('https://www.instagram.com/psia_wataha/');
-        if (this.menuOpen) {
-            this.toggleMenu();
-        }
-    }
-
-    public toggleMenu(): void {
-        (this.hamburger.nativeElement as HTMLElement).classList.toggle(
-            'active'
-        );
-        this.menuOpen = !this.menuOpen;
+    public setActivePage(event: { backgroundUrl: string; url: string }): void {
+        this.selectedPage = event;
     }
 }

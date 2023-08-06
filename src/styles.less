@@ -1,28 +1,45 @@
 @import "/src/app/styles/colors.less";
 
+@font-face {
+    font-family: "Proxima-Nova-bold";
+    src: url("../src/assets/fonts/Proxima-Nova-bold.otf");
+}
+
+@font-face {
+    font-family: "Playfair-italic";
+    src: url("../src/assets/fonts/Playfair-Italic.ttf");
+}
+
+@font-face {
+    font-family: "Montsterrat";
+    src: url("../src/assets/fonts/OpenSans-Montsterrat-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Bitter";
+    src: url("../src/assets/fonts/Bitter-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../src/assets/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+    font-family: "JacquesFrancois";
+    src: url("../src/assets/fonts/JacquesFrancois-Regular.ttf");
+}
+
 html,
 body {
-    height: 100%;
-    overflow: hidden;
-    background: @secondary;
+    width: 100%;
+    color: @secondary;
+    background: @primary;
 }
 
 body {
-    font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial,
-        Lucida Grande, sans-serif;
-    color: @primary;
+    font-family: "Poppins";
     margin: 0;
-    font-size: 16px;
     font-size: 1.6rem;
-    -webkit-font-smoothing: antialiased;
-}
-
-.page-container {
-    position: relative;
-    // height: 100%;
-    margin: auto;
-    overflow-y: auto;
-    overflow-x: hidden;
-    box-sizing: border-box;
-    padding: 0 72px 72px 72px;
+    overflow: auto;
 }
