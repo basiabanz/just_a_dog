@@ -1,3 +1,5 @@
-<div class="menu-button" [ngClass]="[type, isActive ? 'active' : '']">
-    {{ btnTxt }}
+<div class="iqa-button-container">
+    <button (click)="onClick(); $event.stopPropagation()" [ngClass]="[type]">
+        <ng-content></ng-content>
+    </button>
 </div>

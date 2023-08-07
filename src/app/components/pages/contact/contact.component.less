@@ -1,11 +1,12 @@
-@import "/src/app/styles/colors.less";
+@import '/src/app/styles/colors.less';
 
 .contact-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
-    // gap: 20px;
+    padding-top: 120px;
+    padding-bottom: 120px;
 
     .paws {
         width: 400px;
@@ -18,16 +19,16 @@
         font-size: 48px;
         gap: 20px;
 
-        .data-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
+        .name {
+            font-size: 56px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: @secondary;
+            letter-spacing: 2px;
+        }
 
-            &.name {
-                font-size: 56px;
-                font-weight: bold;
-                // color: @tertiary;
-            }
+        .phone-number {
+            letter-spacing: 2px;
         }
     }
 

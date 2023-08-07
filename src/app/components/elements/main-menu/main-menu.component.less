@@ -1,19 +1,13 @@
-@import "/src/app/styles/colors.less";
-@import "bootstrap-icons/font/bootstrap-icons.css";
+@import '/src/app/styles/colors.less';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 
-.menu-container {
-    height: 70px;
-    padding: 0 120px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: "Montsterrat";
-    font-weight: 600;
+.menu-wrapper {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1;
+    height: 70px;
+    z-index: 2;
     background-color: transparent;
     -webkit-transition: background-color 0.4s ease-in-out;
     transition: background-color 0.4s ease-in-out;
@@ -21,8 +15,20 @@
     &.menu-background {
         -webkit-transition: background-color 0.4s ease-in-out;
         transition: background-color 0.4s ease-in-out;
-        background-color: @tertiary;
+        background-color: @primary;
+        box-shadow: 0px 10px 20px rgba(79, 105, 158, 0.25);
     }
+}
+
+.menu-container {
+    max-width: 1700px;
+    padding: 0 120px;
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Montsterrat';
+    font-weight: 600;
 
     @media screen and (max-width: 1024px) {
         padding: 0 40px;
@@ -31,7 +37,7 @@
     .logo {
         width: 160px;
         height: 160px;
-        z-index: 3;
+        z-index: 2;
         margin-top: 128px;
 
         @media screen and (max-width: 1250px) {
@@ -47,9 +53,9 @@
     }
 
     .logo-text {
-        color: @primary;
+        color: @white;
         font-size: 36px;
-        font-family: "Bitter";
+        font-family: 'Bitter';
     }
 
     .hamburger {
@@ -69,7 +75,7 @@
             margin: 5px auto;
             -webkit-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
-            background-color: @primary;
+            background-color: @white;
         }
     }
 
@@ -103,7 +109,7 @@
             flex-direction: column;
             transform: translate3d(100%, 0, 0);
             transition: transform 400ms ease-in-out;
-            background-color: @tertiary;
+            background-color: @primary;
             padding-top: 86px;
 
             &.slide-in-menu {
@@ -117,7 +123,7 @@
             gap: 16px;
             align-items: center;
             height: 100%;
-            color: @primary;
+            color: @white;
 
             .link-icon {
                 cursor: pointer;
@@ -128,7 +134,7 @@
             //     align-items: center;
             //     width: 1px;
             //     height: 60%;
-            //     background: @primary;
+            //     background: @white;
             //     opacity: 0.25;
             //     margin: 0 4px;
             // }
@@ -141,4 +147,11 @@
             // }
         }
     }
+}
+
+.page-overlay {
+    position: fixed;
+    z-index: 1;
+    inset: 0;
+    background-color: @overlay;
 }

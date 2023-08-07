@@ -1,14 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+
 import { ePage } from './helpers/pageLibrary';
 
 @Component({
     selector: 'dog-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.less'],
+    styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit, OnDestroy {
     public title = 'justADog';
-    public selectedPage: any;
+    public selectedPage: { backgroundUrl: string; url: string; key: ePage };
     public ePage = ePage;
 
     constructor() {}
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit, OnDestroy {
         document.body.classList.remove('home');
     }
 
-    public setActivePage(event: { backgroundUrl: string; url: string }): void {
+    public setActivePage(event: { backgroundUrl: string; url: string; key: ePage }): void {
         this.selectedPage = event;
     }
 }

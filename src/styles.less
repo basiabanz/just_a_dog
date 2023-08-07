@@ -1,45 +1,72 @@
-@import "/src/app/styles/colors.less";
+@import '/src/app/styles/colors.less';
 
 @font-face {
-    font-family: "Proxima-Nova-bold";
-    src: url("../src/assets/fonts/Proxima-Nova-bold.otf");
+    font-family: 'Proxima-Nova-bold';
+    src: url('../src/assets/fonts/Proxima-Nova-bold.otf');
 }
 
 @font-face {
-    font-family: "Playfair-italic";
-    src: url("../src/assets/fonts/Playfair-Italic.ttf");
+    font-family: 'Playfair-italic';
+    src: url('../src/assets/fonts/Playfair-Italic.ttf');
 }
 
 @font-face {
-    font-family: "Montsterrat";
-    src: url("../src/assets/fonts/OpenSans-Montsterrat-Regular.ttf");
+    font-family: 'Montsterrat';
+    src: url('../src/assets/fonts/OpenSans-Montsterrat-Regular.ttf');
 }
 
 @font-face {
-    font-family: "Bitter";
-    src: url("../src/assets/fonts/Bitter-Regular.ttf");
+    font-family: 'Bitter';
+    src: url('../src/assets/fonts/Bitter-Regular.ttf');
 }
 
 @font-face {
-    font-family: "Poppins";
-    src: url("../src/assets/fonts/Poppins-Regular.ttf");
+    font-family: 'Poppins';
+    src: url('../src/assets/fonts/Poppins-Regular.ttf');
 }
 
 @font-face {
-    font-family: "JacquesFrancois";
-    src: url("../src/assets/fonts/JacquesFrancois-Regular.ttf");
+    font-family: 'JacquesFrancois';
+    src: url('../src/assets/fonts/JacquesFrancois-Regular.ttf');
 }
 
 html,
 body {
     width: 100%;
-    color: @secondary;
-    background: @primary;
+    color: @primary;
+    background: @white;
 }
 
 body {
-    font-family: "Poppins";
+    font-family: 'Poppins';
     margin: 0;
-    font-size: 1.6rem;
+    font-size: 20px;
     overflow: auto;
+}
+
+.page-wrapper {
+    padding: 0 120px;
+    max-width: 1700px;
+}
+
+.page-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.additional-info-container {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 40px;
+    background-color: @tertiary;
+    text-align: center;
+
+    &.secondary-style {
+        background-color: @fourthary;
+    }
 }

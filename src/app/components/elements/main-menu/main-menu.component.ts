@@ -1,12 +1,4 @@
-import {
-    Component,
-    ElementRef,
-    EventEmitter,
-    HostListener,
-    OnInit,
-    Output,
-    ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { PageLibrary, ePage } from 'src/app/helpers/pageLibrary';
@@ -14,7 +6,7 @@ import { PageLibrary, ePage } from 'src/app/helpers/pageLibrary';
 @Component({
     selector: 'dog-main-menu',
     templateUrl: './main-menu.component.html',
-    styleUrls: ['./main-menu.component.less'],
+    styleUrls: ['./main-menu.component.less']
 })
 export class MainMenuComponent implements OnInit {
     public isMenuBackground = false;
@@ -26,6 +18,7 @@ export class MainMenuComponent implements OnInit {
     @ViewChild('menu') public menu: ElementRef;
 
     @Output() public activePage = new EventEmitter<{
+        key: ePage;
         backgroundUrl: string;
         url: string;
     }>();
@@ -44,23 +37,18 @@ export class MainMenuComponent implements OnInit {
     constructor(private _router: Router) {}
 
     ngOnInit(): void {
-        this._router.events
-            .pipe(filter((event) => event instanceof NavigationEnd))
-            .subscribe((r: any) => {
-                const selectedPage =
-                    PageLibrary.pageSettingsList[
-                        Object.keys(PageLibrary.pageSettingsList).find(
-                            (p) =>
-                                PageLibrary.pageSettingsList[
-                                    p as keyof typeof ePage
-                                ].url === r.url
-                        ) as keyof typeof ePage
-                    ];
-                if (this.menuOpen) {
-                    this.toggleMenu();
-                }
-                this.activePage.emit(selectedPage);
-            });
+        this._router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe((r: any) => {
+            const selectedPage =
+                PageLibrary.pageSettingsList[
+                    Object.keys(PageLibrary.pageSettingsList).find(
+                        (p) => PageLibrary.pageSettingsList[p as keyof typeof ePage].url === r.url
+                    ) as keyof typeof ePage
+                ];
+            if (this.menuOpen) {
+                this.toggleMenu();
+            }
+            this.activePage.emit(selectedPage);
+        });
     }
     public openFacebook(): void {
         window.open('https://www.facebook.com/profile.php?id=100091854533629');
@@ -77,9 +65,7 @@ export class MainMenuComponent implements OnInit {
     }
 
     public toggleMenu(): void {
-        (this.hamburger.nativeElement as HTMLElement).classList.toggle(
-            'active'
-        );
+        (this.hamburger.nativeElement as HTMLElement).classList.toggle('active');
         this.menuOpen = !this.menuOpen;
     }
 }

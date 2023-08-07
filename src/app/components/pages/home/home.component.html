@@ -1,12 +1,23 @@
-<div class="page-container" [ngStyle]="{ height: '100%' }">
-    <div class="home-container">
-        <!-- <div class="home-page-title">
-            <span>Just</span><span>a</span><span>dog</span>
-        </div> -->
-        <div class="home-page-subtitle">
-            <span class="home-text-1">Szkolimy</span>
-            <span class="home-text-2">Uczymy</span>
-            <span class="home-text-3">Kochamy</span>
+<div class="page-container">
+    <div class="additional-info-container">
+        <span class="page-wrapper">Zapoznaj się z moją ofertą</span>
+    </div>
+    <div>
+        <div
+            *ngFor="let content of homePageContent; let i = index"
+            class="home-page-content"
+            [ngStyle]="{ background: content.backgroundColor, color: content.color }"
+        >
+            <div class="home-content-wrapper page-wrapper" [ngClass]="{ 'content-reverse': i % 2 === 0 }">
+                <div class="img-container">
+                    <img class="home-img" src="{{ content.photo }}" />
+                    <div class="content-title">{{ content.title }}</div>
+                </div>
+                <div class="home-content">
+                    <div class="content-text">{{ content.text }}</div>
+                    <dog-button (clicked)="content.btnFunc()">{{ content.btnText }}</dog-button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

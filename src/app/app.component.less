@@ -1,5 +1,5 @@
-@import "/src/app/styles/colors.less";
-@import "bootstrap-icons/font/bootstrap-icons.css";
+@import '/src/app/styles/colors.less';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 
 .top-page-container {
     height: 100vh;
@@ -15,7 +15,7 @@
     .page-subtitle-container {
         display: flex;
         justify-content: center;
-        font-family: "JacquesFrancois";
+        font-family: 'JacquesFrancois';
         font-weight: bold;
         font-size: 68px;
         width: 100%;
@@ -37,9 +37,10 @@
             width: fit-content;
             gap: 36px;
             letter-spacing: 2;
+            padding-left: 16px;
             text-transform: uppercase;
-            border-bottom: 4px solid @primary;
-            border-left: 4px solid @primary;
+            border-bottom: 4px solid @white;
+            border-left: 4px solid @white;
             filter: invert(70%);
             mix-blend-mode: plus-lighter;
 
@@ -57,15 +58,15 @@
             }
 
             .home-text-1 {
-                animation: slideUp ease 0.5s forwards;
+                animation: slideUp ease 0.4s forwards;
             }
 
             .home-text-2 {
-                animation: slideUp ease 0.8s forwards 0.6s;
+                animation: slideUp ease 0.7s forwards 0.6s;
             }
 
             .home-text-3 {
-                animation: slideUp ease 1s forwards 1.2s;
+                animation: slideUp ease 0.9s forwards 1.2s;
             }
         }
     }
@@ -81,9 +82,7 @@
     }
 }
 
-// .page-overlay {
-//     position: fixed;
-//     z-index: 1;
-//     inset: 0;
-//     background-color: @overlay;
-// }
+.main-wrapper {
+    padding: 0 120px;
+    max-width: 1700px;
+}

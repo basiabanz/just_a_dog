@@ -1,12 +1,11 @@
 <dog-main-menu (activePage)="setActivePage($event)"></dog-main-menu>
-
 <div
     class="top-page-container"
     [ngStyle]="{
         'background-image': 'url(' + selectedPage?.backgroundUrl + ')'
     }"
 >
-    <div [ngSwitch]="selectedPage.key" class="page-subtitle-container">
+    <div [ngSwitch]="selectedPage?.key" class="page-subtitle-container">
         <div *ngSwitchCase="ePage.Home" class="page-subtitle">
             <span class="home-text-1">Szkolimy</span>
             <span class="home-text-2">Bawimy</span>
@@ -25,5 +24,4 @@
     </div>
 </div>
 
-<!-- <div [ngClass]="{ 'page-overlay': menuOpen }" (click)="toggleMenu()"></div> -->
 <router-outlet></router-outlet>

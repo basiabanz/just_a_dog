@@ -1,0 +1,47 @@
+@import '/src/app/styles/colors.less';
+
+.menu-button {
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 4px;
+    cursor: pointer;
+    padding: 8px;
+    letter-spacing: 2px;
+    color: @white;
+
+    &:after {
+        position: absolute;
+        background: none repeat scroll 0 0 transparent;
+        content: '';
+        display: block;
+        height: 2px;
+        width: 0;
+        left: 0;
+        bottom: 0;
+        background-color: @fourthary;
+        transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    }
+    &:hover:after,
+    &.active:after {
+        width: 100%;
+    }
+
+    &:before {
+        position: absolute;
+        background: none repeat scroll 0 0 transparent;
+        content: '';
+        display: block;
+        height: 1px;
+        width: 0;
+        right: 0;
+        bottom: -4px;
+        background-color: @fourthary;
+        transition: width 0.3s ease 0s, right 0.3s ease 0s;
+    }
+    &:hover:before,
+    &.active:before {
+        width: 100%;
+    }
+}

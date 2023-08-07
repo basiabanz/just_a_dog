@@ -1,19 +1,15 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
     selector: 'dog-button',
     templateUrl: './button.component.html',
-    styleUrls: ['./button.component.less'],
+    styleUrls: ['./button.component.less']
 })
-export class ButtonComponent implements OnChanges {
-    @Input() public btnTxt: string;
-    @Input() public isActive: boolean;
+export class ButtonComponent {
     @Input() public type: 'primary' | 'secondary' = 'primary';
+    @Output() public clicked = new EventEmitter();
 
-    ngOnChanges(changes: SimpleChanges): void {
-        // if (changes['type']) {
-        //     this.type = changes['type'].currentValue;
-        //     console.log(this.type);
-        // }
+    public onClick(): void {
+        this.clicked.emit();
     }
 }
