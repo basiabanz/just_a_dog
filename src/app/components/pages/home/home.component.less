@@ -21,6 +21,14 @@
         &.content-reverse {
             flex-direction: row-reverse;
 
+            .content-text {
+                padding: 36px 36px 36px 0 !important;
+
+                @media screen and (max-width: 1400px) {
+                    padding: 28px !important;
+                }
+            }
+
             @media screen and (max-width: 1024px) {
                 flex-direction: column;
             }
@@ -68,7 +76,11 @@
 
             .content-text {
                 line-height: 40px;
-                padding: 36px;
+                padding: 36px 0 36px 36px;
+
+                @media screen and (max-width: 1400px) {
+                    padding: 28px;
+                }
 
                 @media screen and (max-width: 1150px) {
                     line-height: 30px;
