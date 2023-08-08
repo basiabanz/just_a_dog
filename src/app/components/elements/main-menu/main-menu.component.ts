@@ -68,4 +68,8 @@ export class MainMenuComponent implements OnInit {
         (this.hamburger.nativeElement as HTMLElement).classList.toggle('active');
         this.menuOpen = !this.menuOpen;
     }
+
+    public navigateHome(): void {
+        this._router.navigate(['/']);
+    }
 }

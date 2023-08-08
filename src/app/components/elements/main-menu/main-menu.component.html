@@ -1,7 +1,7 @@
 <div #menu class="menu-wrapper">
     <div class="menu-container">
-        <img *ngIf="!isMenuBackground" class="logo" src="assets/images/logo.png" />
-        <div *ngIf="isMenuBackground" class="logo-text">Just A Dog</div>
+        <img *ngIf="!isMenuBackground" class="logo" src="assets/images/logo.png" (click)="navigateHome()" />
+        <div *ngIf="isMenuBackground" class="logo-text" (click)="navigateHome()">Just A Dog</div>
         <div #hamburger class="hamburger" (click)="toggleMenu()">
             <span class="bar"></span>
             <span class="bar"></span>

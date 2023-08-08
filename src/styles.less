@@ -1,33 +1,33 @@
-@import "/src/app/styles/colors.less";
+@import '/src/app/styles/colors.less';
 
 @font-face {
-    font-family: "Proxima-Nova-bold";
-    src: url("../src/assets/fonts/Proxima-Nova-bold.otf");
+    font-family: 'Proxima-Nova-bold';
+    src: url('../src/assets/fonts/Proxima-Nova-bold.otf');
 }
 
 @font-face {
-    font-family: "Playfair-italic";
-    src: url("../src/assets/fonts/Playfair-Italic.ttf");
+    font-family: 'Playfair-italic';
+    src: url('../src/assets/fonts/Playfair-Italic.ttf');
 }
 
 @font-face {
-    font-family: "Montsterrat";
-    src: url("../src/assets/fonts/OpenSans-Montsterrat-Regular.ttf");
+    font-family: 'Montsterrat';
+    src: url('../src/assets/fonts/OpenSans-Montsterrat-Regular.ttf');
 }
 
 @font-face {
-    font-family: "Bitter";
-    src: url("../src/assets/fonts/Bitter-Regular.ttf");
+    font-family: 'Bitter';
+    src: url('../src/assets/fonts/Bitter-Regular.ttf');
 }
 
 @font-face {
-    font-family: "Poppins";
-    src: url("../src/assets/fonts/Poppins-Regular.ttf");
+    font-family: 'Poppins';
+    src: url('../src/assets/fonts/Poppins-Regular.ttf');
 }
 
 @font-face {
-    font-family: "JacquesFrancois";
-    src: url("../src/assets/fonts/JacquesFrancois-Regular.ttf");
+    font-family: 'JacquesFrancois';
+    src: url('../src/assets/fonts/JacquesFrancois-Regular.ttf');
 }
 
 html,
@@ -40,10 +40,23 @@ body {
 }
 
 body {
-    font-family: "Poppins";
+    font-family: 'Poppins';
     margin: 0;
     font-size: 20px;
     overflow: auto;
+}
+
+body::-webkit-scrollbar {
+    width: 14px;
+}
+
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: darken(@fourthary, 10%);
+    border-radius: 50px;
 }
 
 .page-wrapper {
