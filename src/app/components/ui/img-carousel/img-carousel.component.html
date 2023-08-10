@@ -1,0 +1,28 @@
+<div [attr.id]="id" class="carousel">
+    <div class="carousel-content">
+        <div class="carousel-container">
+            <!-- <i class="bi bi-arrow-left"                 (click)="navBackward($event)"
+            ></i> -->
+            <button class="carousel-prev p-link" (click)="navBackward($event)">previous</button>
+            <div class="carousel-items-content">
+                <div
+                    #itemsContainer
+                    class="carousel-items-container"
+                    (transitionend)="onTransitionEnd()"
+                    (touchend)="onTouchEnd($event)"
+                    (touchstart)="onTouchStart($event)"
+                    (touchmove)="onTouchMove($event)"
+                >
+                    <div *ngFor="let item of value; let index = index" class="carousel-item">
+                        <ng-container
+                            *ngIf="templateRef"
+                            [ngTemplateOutlet]="templateRef"
+                            [ngTemplateOutletContext]="{ $implicit: item }"
+                        ></ng-container>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-next p-link" (click)="navForward($event)">next</button>
+        </div>
+    </div>
+</div>
