@@ -24,7 +24,7 @@
                         "tsConfig": "tsconfig.app.json",
                         "inlineStyleLanguage": "less",
                         "assets": ["src/assets/images/logo.png", "src/assets"],
-                        "styles": ["src/styles.less"],
+                        "styles": ["src/styles.less", "bootstrap-icons/font/bootstrap-icons.css"],
                         "scripts": []
                     },
                     "configurations": {

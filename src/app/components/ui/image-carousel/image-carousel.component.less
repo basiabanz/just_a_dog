@@ -1,0 +1,78 @@
+@import '/src/app/styles/colors.less';
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .bi-arrow-left,
+    .bi-arrow-right {
+        color: @tertiary;
+        font-weight: bold;
+        font-size: 80px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .carousel-wrapper {
+        width: 90%;
+        position: relative;
+
+        .carousel-elements {
+            display: grid;
+            grid-auto-flow: column;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 16px;
+            border-radius: 8px;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .carousel-item {
+                scroll-snap-align: start;
+                height: 342px;
+                list-style: none;
+                background: @fourthary;
+                cursor: pointer;
+                padding-bottom: 15px;
+                flex-direction: column;
+                border-radius: 8px;
+            }
+        }
+    }
+}
+
+.carousel-elements .no-transition {
+    scroll-behavior: auto;
+}
+.carousel-elements .dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+.carousel-elements .dragging .carousel-item {
+    cursor: grab;
+    user-select: none;
+}
+.carousel-elements :where(.carousel-item, .img) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 900px) {
+    .carousel-wrapper .carousel-elements {
+        grid-auto-columns: calc((100% / 2) - 9px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .carousel-wrapper .carousel-elements {
+        grid-auto-columns: 100%;
+    }
+}

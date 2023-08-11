@@ -83,9 +83,7 @@ export class ImgCarouselComponent implements AfterContentInit {
 
     public _value: any[] | null | undefined;
 
-    private _carouselStyle: any;
-
-    public id: string | undefined;
+    // public id: string | undefined;
 
     private _totalShiftedItems;
 
@@ -95,43 +93,26 @@ export class ImgCarouselComponent implements AfterContentInit {
 
     private _startPos: any;
 
+    public dynamicFlexStyle: string;
+
     @ContentChild('template', { static: false }) public templateRef: TemplateRef<any>;
 
     // public allowAutoplay: boolean | undefined;
 
     public isCreated: boolean | undefined;
 
-    constructor(
-        public el: ElementRef,
-        public zone: NgZone,
-        public cd: ChangeDetectorRef,
-        private _renderer: Renderer2,
-        @Inject(DOCUMENT) private _document: Document
-    ) {
+    constructor(public el: ElementRef, public zone: NgZone, public cd: ChangeDetectorRef) {
         this._totalShiftedItems = this.page * -1;
     }
 
-    // ngOnChanges(simpleChange: SimpleChanges): void {
-    //     if (this.isCreated) {
-    //         if (simpleChange['numVisible']) {
-    //             this.createStyle();
-    //         }
-    //     }
-    // }
-
-    public UniqueComponentId(prefix = 'pn_id_'): string {
-        this.lastId++;
-        return `${prefix}${this.lastId}`;
-    }
-
     ngAfterContentInit(): void {
-        this.id = this.UniqueComponentId();
         this.createStyle();
     }
 
     ngAfterContentChecked(): void {
         let totalShiftedItems = this._totalShiftedItems;
-
+        console.log(totalShiftedItems);
+        console.log(this._prevState);
         if (
             this.value &&
             this.itemsContainer &&
@@ -191,18 +172,7 @@ export class ImgCarouselComponent implements AfterContentInit {
     }
 
     public createStyle(): void {
-        if (!this._carouselStyle) {
-            this._carouselStyle = this._renderer.createElement('style');
-            this._carouselStyle.type = 'text/css';
-            this._renderer.appendChild(this._document.head, this._carouselStyle);
-        }
-
-        const innerHTML = `
-          #${this.id} carousel-item {
-      flex: 1 0 ${100 / this.numVisible}%
-    }
-      `;
-        this._carouselStyle.innerHTML = innerHTML;
+        this.dynamicFlexStyle = `1 0 ${100 / this.numVisible}%`;
     }
 
     public totalDots(): number {

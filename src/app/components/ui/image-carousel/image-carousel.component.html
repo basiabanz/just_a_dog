@@ -1,0 +1,15 @@
+<div class="carousel-container">
+    <i class="bi bi-arrow-left" (click)="prev()"></i>
+    <div class="carousel-wrapper">
+        <div #itemsContainer class="carousel-elements" [ngStyle]="{ 'grid-auto-columns': dynamicFlexStyle }">
+            <div *ngFor="let item of values; let index = index" class="carousel-item">
+                <ng-container
+                    *ngIf="templateRef"
+                    [ngTemplateOutlet]="templateRef"
+                    [ngTemplateOutletContext]="{ $implicit: item }"
+                ></ng-container>
+            </div>
+        </div>
+    </div>
+    <i class="bi bi-arrow-right" (click)="next()"></i>
+</div>

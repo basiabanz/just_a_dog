@@ -3,8 +3,7 @@
         <span class="page-wrapper about-me-header space-content">
             <span>Poznaj mnie bliżej</span>
             <span class="about-me-subtitle">
-                Zajebiście mądry tekst mojego autorstwa jkieś bla bla coooos,.
-                Spiszmy się kochać ludzi tak szbko odchodza
+                Zajebiście mądry tekst mojego autorstwa jkieś bla bla coooos,. Spiszmy się kochać ludzi tak szbko odchodza
             </span>
         </span>
     </div>
@@ -12,29 +11,18 @@
         <div class="about-me-content-wrapper page-wrapper">
             <div class="about-me-content">
                 <div class="content-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum. Lorem ipsum dolor sit
-                    amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi
-                    ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id
-                    est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit
+                    amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
             </div>
             <div class="img-container">
-                <img
-                    class="about-me-img"
-                    src="assets/images/temp/aboutMe-1.jpg"
-                />
+                <img class="about-me-img" src="assets/images/temp/aboutMe-1.jpg" />
             </div>
         </div>
     </div>
@@ -42,8 +30,20 @@
         <span class="page-wrapper">Moje certyfikaty</span>
     </div>
     <div class="certificate-wrapper page-wrapper">
-        <img class="certificate" src="assets/images/temp/certificate.jpg" />
-        <img class="certificate" src="assets/images/temp/certificate.jpg" />
-        <img class="certificate" src="assets/images/temp/certificate.jpg" />
+        <dog-image-carousel [values]="products">
+            <ng-template let-item #template>
+                <div class="product-item">
+                    <div class="product-item-content">
+                        <div class="mb-3">
+                            <img
+                                src="https://primefaces.org/cdn/primeng/images/demo/product/{{ item.image }}"
+                                [alt]="item.name"
+                                class="product-image"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </dog-image-carousel>
     </div>
 </div>

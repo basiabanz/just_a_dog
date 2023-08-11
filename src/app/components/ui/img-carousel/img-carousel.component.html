@@ -1,9 +1,9 @@
-<div [attr.id]="id" class="carousel">
+<div class="carousel">
     <div class="carousel-content">
         <div class="carousel-container">
             <!-- <i class="bi bi-arrow-left"                 (click)="navBackward($event)"
             ></i> -->
-            <button class="carousel-prev p-link" (click)="navBackward($event)">previous</button>
+            <button class="carousel-prev" (click)="navBackward($event)">previous</button>
             <div class="carousel-items-content">
                 <div
                     #itemsContainer
@@ -13,7 +13,7 @@
                     (touchstart)="onTouchStart($event)"
                     (touchmove)="onTouchMove($event)"
                 >
-                    <div *ngFor="let item of value; let index = index" class="carousel-item">
+                    <div *ngFor="let item of value; let index = index" class="carousel-item" [ngStyle]="{ flex: dynamicFlexStyle }">
                         <ng-container
                             *ngIf="templateRef"
                             [ngTemplateOutlet]="templateRef"
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <button class="carousel-next p-link" (click)="navForward($event)">next</button>
+            <button class="carousel-next" (click)="navForward($event)">next</button>
         </div>
     </div>
 </div>
