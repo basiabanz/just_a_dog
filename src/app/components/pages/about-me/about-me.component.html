@@ -30,19 +30,15 @@
         <span class="page-wrapper">Moje certyfikaty</span>
     </div>
     <div class="certificate-wrapper page-wrapper">
-        <dog-image-carousel [values]="products">
+        <dog-image-carousel [values]="certificates">
             <ng-template let-item #template>
-                <div class="product-item">
-                    <div class="product-item-content">
-                        <div class="mb-3">
+                 
                             <img
-                                src="https://primefaces.org/cdn/primeng/images/demo/product/{{ item.image }}"
-                                [alt]="item.name"
-                                class="product-image"
-                            />
-                        </div>
-                    </div>
-                </div>
+                    src="assets/images/certificates/{{ item.image }}.jpg"
+                    [alt]="item.name"
+                    class="certificate-image"
+                />
+
             </ng-template>
         </dog-image-carousel>
     </div>

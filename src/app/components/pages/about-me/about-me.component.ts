@@ -3,72 +3,16 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'dog-about-me',
     templateUrl: './about-me.component.html',
-    styleUrls: ['./about-me.component.less']
+    styleUrls: ['./about-me.component.less'],
 })
 export class AboutMeComponent implements OnInit {
-    public products = [
-        {
-            id: '1000',
-            code: 'f230fh0g3',
-            name: 'Bamboo Watch',
-            description: 'Product Description',
-            image: 'bamboo-watch.jpg',
-            price: 65,
-            category: 'Accessories',
-            quantity: 24,
-            inventoryStatus: 'INSTOCK',
-            rating: 5
-        },
-        {
-            id: '1000',
-            code: 'f230fh0g3',
-            name: 'Bamboo Watch',
-            description: 'Product Description',
-            image: 'bamboo-watch.jpg',
-            price: 65,
-            category: 'Accessories',
-            quantity: 24,
-            inventoryStatus: 'INSTOCK',
-            rating: 5
-        },
-        {
-            id: '1000',
-            code: 'f230fh0g3',
-            name: 'Bamboo Watch',
-            description: 'Product Description',
-            image: 'bamboo-watch.jpg',
-            price: 65,
-            category: 'Accessories',
-            quantity: 24,
-            inventoryStatus: 'INSTOCK',
-            rating: 5
-        },
-        {
-            id: '1000',
-            code: 'f230fh0g3',
-            name: 'Bamboo Watch',
-            description: 'Product Description',
-            image: 'bamboo-watch.jpg',
-            price: 65,
-            category: 'Accessories',
-            quantity: 24,
-            inventoryStatus: 'INSTOCK',
-            rating: 5
-        },
-        {
-            id: '1000',
-            code: 'f230fh0g3',
-            name: 'Bamboo Watch',
-            description: 'Product Description',
-            image: 'bamboo-watch.jpg',
-            price: 65,
-            category: 'Accessories',
-            quantity: 24,
-            inventoryStatus: 'INSTOCK',
-            rating: 5
-        }
+    public certificates = [
+        { id: 1, name: 'C1', image: 'certificate' },
+        { id: 2, name: 'C2', image: 'certificate2' },
+        { id: 3, name: 'C3', image: 'certificate' },
+        { id: 4, name: 'C4', image: 'certificate2' },
+        { id: 5, name: 'C5', image: 'certificate' },
     ];
-
     ngOnInit(): void {
         window.scrollTo({ top: 0 });
     }
