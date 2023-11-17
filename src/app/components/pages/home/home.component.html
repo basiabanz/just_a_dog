@@ -1,33 +1,24 @@
 <div class="page-container">
     <div class="additional-info-container">
-        <span class="page-wrapper space-content"
-            >Zapoznaj się z moją ofertą</span
-        >
+        <span class="page-wrapper space-mobile-content">Zapoznaj się z moją ofertą</span>
     </div>
-    <div>
-        <div
-            *ngFor="let content of homePageContent; let i = index"
-            class="home-page-content"
-            [ngStyle]="{
-                background: content.backgroundColor,
-                color: content.color
-            }"
-        >
-            <div
-                class="home-content-wrapper page-wrapper"
-                [ngClass]="{ 'content-reverse': i % 2 === 0 }"
-            >
-                <div class="img-container">
-                    <img class="home-img" src="{{ content.photo }}" />
-                    <div class="content-title">{{ content.title }}</div>
-                </div>
-                <div class="home-content">
-                    <div class="content-text">{{ content.text }}</div>
-                    <dog-button
-                        [type]="content.btnType"
-                        (clicked)="content.btnFunc()"
-                        >{{ content.btnText }}</dog-button
-                    >
+    <div
+        *ngFor="let content of homePageContent; let i = index"
+        class="home-page-content"
+        [ngStyle]="{
+            background: content.backgroundColor,
+            color: content.color
+        }"
+    >
+        <div class="home-content-wrapper page-wrapper" [ngClass]="{ 'content-reverse': i % 2 === 0 }">
+            <div class="img-container">
+                <img class="home-img" src="assets/images/temp/{{ content.photo }}.jpg" />
+                <div class="content-title">{{ content.title }}</div>
+            </div>
+            <div class="home-content">
+                <div class="content">
+                    <span>{{ content.text }}</span>
+                    <dog-button [type]="content.btnType" (clicked)="content.btnFunc()">{{ content.btnText }}</dog-button>
                 </div>
             </div>
         </div>

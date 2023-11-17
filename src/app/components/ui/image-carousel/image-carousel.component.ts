@@ -1,138 +1,51 @@
-import {
-    Component,
-    ContentChild,
-    ElementRef,
-    Input,
-    TemplateRef,
-    ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, ContentChild, ElementRef, Input, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({
     selector: 'dog-image-carousel',
     templateUrl: './image-carousel.component.html',
-    styleUrls: ['./image-carousel.component.less'],
+    styleUrls: ['./image-carousel.component.less']
 })
-export class ImageCarouselComponent {
+export class ImageCarouselComponent implements AfterViewInit {
     @Input() public itemsShowNo = 3;
     @Input() public values: any[];
     @ViewChild('itemsContainer') public itemsContainer: ElementRef;
-    @ContentChild('template', { static: false })
-    public templateRef: TemplateRef<any>;
+    @ContentChild('template', { static: false }) public templateRef: TemplateRef<any>;
 
     public dynamicFlexStyle: string;
-    public firstCardWidth: any;
-    public carouselChildrens: any;
-    public startX: any;
-    public startScrollLeft: any;
-    public isDragging = false;
+    public cardWidth: number;
+    private _carouselChildren: any; //TODO type
+
+    private _firstId: number;
 
     ngAfterViewInit(): void {
         this.dynamicFlexStyle = `calc((100% / ${this.itemsShowNo}) - 12px)`;
 
-        this.firstCardWidth = (
-            this.itemsContainer.nativeElement as HTMLElement
-        ).children.item(0)?.scrollWidth;
-        this.carouselChildrens = [
-            ...this.itemsContainer.nativeElement.children,
-        ];
-        this.itemsContainer.nativeElement.addEventListener(
-            'mousedown',
-            this.dragStart
-        );
-        this.itemsContainer.nativeElement.addEventListener(
-            'mousemove',
-            this.dragging
-        );
-        document.addEventListener('mouseup', this.dragStop);
-        console.log(this.firstCardWidth);
-        console.log(this.carouselChildrens);
+        this.cardWidth = (this.itemsContainer.nativeElement as HTMLElement).children.item(0)?.scrollWidth as number;
+        this._carouselChildren = [...this.itemsContainer.nativeElement.children];
 
-        // Insert copies of the last few cards to beginning of carousel for infinite scrolling
-        this.carouselChildrens
-            .slice(-this.itemsShowNo)
-            .reverse()
-            .forEach((card: { outerHTML: any }) => {
-                this.itemsContainer.nativeElement.insertAdjacentHTML(
-                    'afterbegin',
-                    card.outerHTML
-                );
-            });
-
-        // Insert copies of the first few cards to end of carousel for infinite scrolling
-        this.carouselChildrens
-            .slice(0, this.itemsShowNo)
-            .forEach((card: any) => {
-                this.itemsContainer.nativeElement.insertAdjacentHTML(
-                    'beforeend',
-                    card.outerHTML
-                );
-            });
-
-        // Scroll the carousel at appropriate postition to hide first few duplicate cards on Firefox
-        this.itemsContainer.nativeElement.classList.add('no-transition');
-        this.itemsContainer.nativeElement.scrollLeft =
-            this.itemsContainer.nativeElement.offsetWidth;
-        this.itemsContainer.nativeElement.classList.remove('no-transition');
+        this._firstId = Number(this._carouselChildren[0].getAttribute('id'));
     }
 
     public prev(): void {
-        this.itemsContainer.nativeElement.scrollLeft += -this.firstCardWidth;
+        this._firstId = this._firstId === 0 ? this.values.length - 1 : this._firstId - 1;
+
         if (this.itemsContainer.nativeElement.scrollLeft === 0) {
-            this.itemsContainer.nativeElement.classList.add('no-transition');
-            this.itemsContainer.nativeElement.scrollLeft =
-                this.itemsContainer.nativeElement.scrollWidth -
-                2 * this.itemsContainer.nativeElement.offsetWidth;
-            this.itemsContainer.nativeElement.classList.remove('no-transition');
+            this.itemsContainer.nativeElement.insertAdjacentHTML('afterbegin', this._carouselChildren[this._firstId].outerHTML);
         }
+        this.itemsContainer.nativeElement.scrollLeft += -this.cardWidth;
     }
 
     public next(): void {
-        this.itemsContainer.nativeElement.scrollLeft += this.firstCardWidth;
+        this._firstId = this._firstId === this.values.length - 1 ? 0 : this._firstId + 1;
+
         if (
             Math.ceil(this.itemsContainer.nativeElement.scrollLeft) ===
-            this.itemsContainer.nativeElement.scrollWidth -
-                this.itemsContainer.nativeElement.offsetWidth
+            this.itemsContainer.nativeElement.scrollWidth - this.itemsContainer.nativeElement.offsetWidth
         ) {
-            console.log('wee');
-            this.carouselChildrens
-                .slice(0, this.itemsShowNo)
-                .forEach((card: any) => {
-                    this.itemsContainer.nativeElement.insertAdjacentHTML(
-                        'beforeend',
-                        card.outerHTML
-                    );
-                });
-            this.next();
-            // this.itemsContainer.nativeElement.classList.add('no-transition');
-            // this.itemsContainer.nativeElement.scrollLeft =
-            //     this.itemsContainer.nativeElement.offsetWidth;
-            // this.itemsContainer.nativeElement.classList.remove('no-transition');
+            const shouldBeNext = this._firstId + this.itemsShowNo - 1;
+            const nextId = shouldBeNext > this.values.length - 1 ? shouldBeNext - this.itemsShowNo - 2 : shouldBeNext;
+            this.itemsContainer.nativeElement.insertAdjacentHTML('beforeend', this._carouselChildren[nextId].outerHTML);
         }
-    }
-
-    public dragStart(e: any) {
-        this.isDragging = true;
-        if (this.itemsContainer) {
-            this.itemsContainer.nativeElement.classList.add('dragging');
-            // Records the initial cursor and scroll position of the carousel
-            this.startX = e.pageX;
-            this.startScrollLeft = this.itemsContainer.nativeElement.scrollLeft;
-        }
-    }
-
-    public dragging(e: any) {
-        if (!this.isDragging) return; // if isDragging is false return from here
-        // Updates the scroll position of the carousel based on the cursor movement
-        if (this.itemsContainer) {
-            this.itemsContainer.nativeElement.scrollLeft =
-                this.startScrollLeft - (e.pageX - this.startX);
-        }
-    }
-
-    public dragStop() {
-        this.isDragging = false;
-        if (this.itemsContainer) {
-            this.itemsContainer.nativeElement.classList.remove('dragging');
-        }
+        this.itemsContainer.nativeElement.scrollLeft += this.cardWidth;
     }
 }

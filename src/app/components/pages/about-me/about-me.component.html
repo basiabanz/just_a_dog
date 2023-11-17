@@ -1,9 +1,9 @@
 <div class="page-container">
-    <div class="additional-info-container secondary-style">
-        <span class="page-wrapper about-me-header space-content">
+    <div class="additional-info-container space-mobile-content secondary-style">
+        <span class="page-wrapper about-me-header">
             <span>Poznaj mnie bliżej</span>
             <span class="about-me-subtitle">
-                Zajebiście mądry tekst mojego autorstwa jkieś bla bla coooos,. Spiszmy się kochać ludzi tak szbko odchodza
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </span>
         </span>
     </div>
@@ -26,19 +26,13 @@
             </div>
         </div>
     </div>
-    <div class="additional-info-container">
+    <div class="additional-info-container space-mobile-content">
         <span class="page-wrapper">Moje certyfikaty</span>
     </div>
     <div class="certificate-wrapper page-wrapper">
         <dog-image-carousel [values]="certificates">
             <ng-template let-item #template>
-                 
-                            <img
-                    src="assets/images/certificates/{{ item.image }}.jpg"
-                    [alt]="item.name"
-                    class="certificate-image"
-                />
-
+                <img src="assets/images/certificates/{{ item.image }}.jpg" [id]="item.id" [alt]="item.name" class="certificate-image" />
             </ng-template>
         </dog-image-carousel>
     </div>
