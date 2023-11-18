@@ -1,0 +1,4 @@
+<dialog #dialog [ngClass]="'mobile-dialog' && isMobile" (close)="closeDialog()">
+    <i class="bi x-lg" (click)="closeDialog()"></i>
+    <div class="main"><ng-content></ng-content></div>
+</dialog>

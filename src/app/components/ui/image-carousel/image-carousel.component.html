@@ -1,12 +1,8 @@
 <div class="carousel-container">
     <i class="bi bi-arrow-left" (click)="prev()"></i>
     <div class="carousel-wrapper">
-        <div
-            #itemsContainer
-            class="carousel-elements"
-            [ngStyle]="{ 'grid-auto-columns': dynamicFlexStyle }"
-        >
-            <div *ngFor="let item of values" class="carousel-item">
+        <div #itemsContainer class="carousel-elements" [ngStyle]="{ 'grid-auto-columns': dynamicFlexStyle }">
+            <div *ngFor="let item of values" class="carousel-item" (click)="selectCertificate(item)">
                 <ng-container
                     *ngIf="templateRef"
                     [ngTemplateOutlet]="templateRef"
@@ -17,3 +13,7 @@
     </div>
     <i class="bi bi-arrow-right" (click)="next()"></i>
 </div>
+
+<dog-dialog *ngIf="selectedItem" (closed)="closeDialog()">
+    <img src="assets/images/certificates/{{ selectedItem?.image }}.jpg" [alt]="selectedItem.name" class="selected-item-image" />
+</dog-dialog>

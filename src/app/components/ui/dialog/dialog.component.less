@@ -1,0 +1,37 @@
+@import '/src/app/styles/colors.less';
+
+dialog {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    background: @fourthary;
+    overflow: hidden;
+    z-index: 1;
+    max-height: 100dvh;
+    height: 100%;
+    width: 100%;
+
+    @media (min-width: 768px) {
+        max-height: calc(100dvh - 2em);
+        width: 90%;
+        border-radius: 8px;
+    }
+
+    @media (min-width: 1024px) {
+        width: 60%;
+    }
+
+    &.is-mobile {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .main {
+        flex-grow: 1;
+        padding: 16px 24px;
+        //min-height: 96px;
+    }
+}
