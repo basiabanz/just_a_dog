@@ -22,11 +22,23 @@
         z-index: 1;
 
         &.bi-arrow-right {
-            right: 50px;
+            right: 36px;
+            @media screen and (max-width: 1524px) {
+                right: 20px;
+            }
+            @media screen and (max-width: 1024px) {
+                right: 0px;
+            }
         }
 
         &.bi-arrow-left {
-            left: 50px;
+            left: 36px;
+            @media screen and (max-width: 1524px) {
+                left: 20px;
+            }
+            @media screen and (max-width: 1024px) {
+                left: 0px;
+            }
         }
     }
 
@@ -36,10 +48,10 @@
 
         .carousel-elements {
             display: grid;
+            justify-content: space-between;
             grid-auto-flow: column;
             overflow-x: scroll;
             scroll-snap-type: x mandatory;
-            gap: 16px;
             border-radius: 8px;
             scroll-behavior: smooth;
             scrollbar-width: none;
@@ -55,6 +67,7 @@
                 background: @fourthary;
                 cursor: pointer;
                 border-radius: 8px;
+                padding: 16px;
             }
         }
     }

@@ -1,4 +1,14 @@
-import { AfterViewInit, Component, ContentChild, ElementRef, Input, TemplateRef, ViewChild } from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectorRef,
+    Component,
+    ContentChild,
+    ElementRef,
+    HostListener,
+    Input,
+    TemplateRef,
+    ViewChild
+} from '@angular/core';
 
 @Component({
     selector: 'dog-image-carousel',
@@ -19,14 +29,32 @@ export class ImageCarouselComponent implements AfterViewInit {
     private _lastId: number;
     public selectedItem: any;
 
-    ngAfterViewInit(): void {
-        this.dynamicFlexStyle = `calc((100% / ${this.itemsShowNo}) - 16px)`;
+    constructor(private _cdr: ChangeDetectorRef) {}
 
-        this.cardWidth = (this.itemsContainer.nativeElement as HTMLElement).children.item(0)?.scrollWidth as number;
+    @HostListener('window:resize', ['$event'])
+    public onResize(): void {
+        if (window.innerWidth <= 1224 && this.itemsShowNo !== 2) {
+            this.dynamicFlexStyle = `calc(50% - 8px);`;
+            this._cdr.detectChanges();
+            console.log('wee');
+        } else if (window.innerWidth <= 760 && this.itemsShowNo !== 1) {
+            this.dynamicFlexStyle = '100%';
+            this._cdr.detectChanges();
+            console.log('wee 2');
+        }
+    }
+
+    ngAfterViewInit(): void {
+        this.dynamicFlexStyle = `calc((100% / ${this.itemsShowNo}) - ${(this.itemsShowNo - 1) * 8}px)`;
+        this.onResize();
+
         this._carouselChildren = [...this.itemsContainer.nativeElement.children];
 
         this._firstId = Number(this._carouselChildren[0].firstChild.getAttribute('id'));
         this._lastId = Number(this._carouselChildren[this.itemsShowNo - 1].firstChild.getAttribute('id'));
+        setTimeout(() => {
+            this.cardWidth = (this.itemsContainer.nativeElement as HTMLElement).children.item(0)?.scrollWidth as number;
+        });
     }
 
     public prev(): void {
@@ -43,16 +71,6 @@ export class ImageCarouselComponent implements AfterViewInit {
     public next(): void {
         this._firstId = this._firstId === this.values.length - 1 ? 0 : this._firstId + 1;
         this._lastId = this._lastId === this.values.length - 1 ? 0 : this._lastId + 1;
-
-        // console.log(this._lastId);
-        // if (this._lastId === 4 || this._start) {
-        //     this.itemsContainer.nativeElement.insertAdjacentHTML(
-        //         'beforeend',
-        //         this._carouselChildren[this._lastId === this.values.length - 1 ? 0 : this._lastId + 1].outerHTML
-        //     );
-        //     this._start = true;
-        //     console.log(this.itemsContainer.nativeElement);
-        // }
         if (
             Math.ceil(this.itemsContainer.nativeElement.scrollLeft) ===
             this.itemsContainer.nativeElement.scrollWidth - this.itemsContainer.nativeElement.offsetWidth
